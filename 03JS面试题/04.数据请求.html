@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// (1) XHR
+		var xhr = new XMLHttpRequest()
+		xhr.open('get', "www.aaaa.com", true)//异步
+		xhr.send()
+		xhr.onreadystatechange = function () {
+			// readstate  4
+			// status  200-300
+			// 200 成功 （有可能强缓存策略，cache-control,expired）
+			// 301 302 redirect
+			// 304 从缓存读取数据。(协商缓存策略,etag)
+			// 404 not found
+			// 500 服务器错误。	
+		}
+		// xhr 可以取消？
+		xhr.abort()//终止请求。
+
+		//(2) fetch （w3c）
+		fetch("url",
+			{ method: "post", body: "", credencial: 'include' })
+			.then(res => res.json())
+			.then(res => { console.log(res) })
+		//3) jsonp (解决跨域)
+// 		动态创建script src指向没有跨域限制，  onload
+
+// 后端返回的数据格式 一定是， test('["111","222","3333"]');
+
+// 前端提前定义好 test这个方法，通过形参就拿到数据了。
+
+// jsonp 可以做get请求， 无法做post请求（缺点）;
+
+// 		jsonp可以取消吗？不能
+	</script>
+</body>
+
+</html>

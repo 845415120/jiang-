@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  重绘是当节点需要更改外观而不会影响布局的，比如改变 color 就叫称为重绘
+  回流是布局或者几何属性需要改变就称为回流
+  <!-- 回流必定会发生重绘，重绘不一定会引发回流 -->
+  回流所需的成本比重绘高的多，改变深层次的节点很可能导致父节点的一系列回流
+
+  减少重绘和回流
+  ● 批量修改DOM
+  ● 对于复杂动画效果,使用绝对定位让其脱离文档流
+  ● css3硬件加速（GPU加速）transform、opacity、filters这些动画不会引起回流重绘
+</body>
+
+</html>

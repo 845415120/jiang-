@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 简述data:属性的用法（如何设置，如何获取），有何优势？ -->
+  <!-- 读写方式
+  data-*有两种设置方式，可以直接在HTML元素标签上书写 -->
+  <div id="test" data-age="24">
+    Click Here
+  </div>
+  <!-- 其中的data-age就是一种自定义属性，当然我们也可以通过JavaScript来对其进行操作，
+  HTML5中元素都会有一个dataset的属性，这是一个DOMStringMap类型的键值对集合 -->
+  <script>
+    var test = document.getElementById('test')
+    test.dataset.my = 'Byron';
+  </script>
+  这样就为div添加了一个data-my的自定义属性，使用JavaScript操作dataset有两个需要注意的地方
+  1. 我们在添加或读取属性的时候需要去掉前缀data-*，像上面的例子我们没有使用test.dataset.data-my = 'Byron';的形式。
+  2. 如果属性名称中还包含连字符(-)，需要转成驼峰命名方式，但如果在CSS中使用选择器，我们需要使用连字符格式
+
+  <!-- data-* 的值的获取和设置，2种方法： -->
+  1）传统方法 getAttribute() 获取data-属性值； setAttribute() 设置data-属性值
+  getAttribute() 获取data-属性值；
+  setAttribute() 设置data-属性值
+
+  <script>
+    var test = document.getElementById('test')
+    test.dataset.birthDate = '19890615'
+    test.setAttribute('age', 25)
+    test.setAttribute('data-sex', 'male')
+
+    console.log(test.getAttribute('data-age')) //24
+    console.log(test.getAttribute('data-birth-date')) //19890516
+    console.log(test.dataset.age) //24
+    console.log(test.dataset.sex) //male
+  </script>
+  2)HTML5新⽅法
+
+  例如 data-kerwin
+  dataset.kerwin 获取data-kerwin属性值
+  dataset.kerwin = “赵钱孙李” 设置data-kerwin属性值
+  <script>
+    var test = document.getElementById('test')
+    test.dataset.my = 'Byron'
+    test.dataset.birthDate = '19890615'
+    test.onclick = function () {
+      alert(this.dataset.my + ' ' + this.dataset.age + ' ' + this.dataset.birthDate)
+    }
+
+  </script>
+</body>
+
+</html>
